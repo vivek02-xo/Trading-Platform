@@ -1,6 +1,25 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 import { Link } from "react-router-dom";
+import "./style/Menu.css";
+
+// handaling logout
+const handleLogout = async () => {
+  try {
+    await axios.post(
+      "http://localhost:3002/auth/logout",
+      {},
+      {
+        withCredentials: true,
+      },
+    );
+
+    window.location.href = "http://localhost:3001/login";
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
@@ -90,10 +109,18 @@ const Menu = () => {
           </li>
         </ul>
         <hr />
+
+        {/* Profile logout only*/}
         <div className="profile" onClick={handleProfileClick}>
           <div className="avatar">ZU</div>
           <p className="username">USERID</p>
         </div>
+
+        {isProfileDropdownOpen && (
+          <div className="profile-dropdown">
+            <button onClick={handleLogout}>Logout</button>
+          </div>
+        )}
       </div>
     </div>
   );

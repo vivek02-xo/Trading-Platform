@@ -1,0 +1,105 @@
+.auth-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(143, 187, 204, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.auth-page * {
+  box-sizing: border-box;
+}
+
+.form_container {
+  background: white;
+  padding: 2rem 3rem;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 8px 8px 24px rgba(66, 68, 90, 0.3);
+}
+
+.form_container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #00d4ff;
+}
+
+.form_container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.form_container form div {
+  display: flex;
+  flex-direction: column;
+}
+
+.form_container label {
+  margin-bottom: 6px;
+  font-size: 15px;
+  color: #656262;
+}
+
+.form_container input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.form_container input:focus {
+  border-color: #00d4ff;
+}
+
+.form_container button {
+  margin-top: 10px;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #00d4ff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form_container button:hover {
+  background: #0099cc;
+}
+
+.form_container span {
+  text-align: center;
+  font-size: 14px;
+}
+
+.form_container span a {
+  color: #00d4ff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.form_container span a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .form_container {
+    margin: 20px;
+    padding: 1.5rem;
+  }
+
+  .form_container h2 {
+    font-size: 1.5rem;
+  }
+}
