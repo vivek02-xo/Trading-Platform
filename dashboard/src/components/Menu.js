@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// Axios is a JavaScript library used to send HTTP requests from your frontend (React) or backend (Node.js) to a server or API.
 import axios from "axios";
 
 import { Link } from "react-router-dom";
@@ -7,6 +8,7 @@ import "./style/Menu.css";
 // handaling logout
 const handleLogout = async () => {
   try {
+    // Sending req to backend to logout
     await axios.post(
       "http://localhost:3002/auth/logout",
       {},
@@ -15,6 +17,7 @@ const handleLogout = async () => {
       },
     );
 
+    // redirect to login page
     window.location.href = "http://localhost:3001/login";
   } catch (error) {
     console.error(error);
@@ -23,15 +26,15 @@ const handleLogout = async () => {
 
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
-  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+  // const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
 
   const handleMenuClick = (index) => {
     setSelectedMenu(index);
   };
 
-  const handleProfileClick = (index) => {
-    setIsProfileDropdownOpen(!isProfileDropdownOpen);
-  };
+  // const handleProfileClick = (index) => {
+  //   setIsProfileDropdownOpen(!isProfileDropdownOpen);
+  // };
 
   const menuClass = "menu";
   const activeMenuClass = "menu selected";
@@ -111,16 +114,14 @@ const Menu = () => {
         <hr />
 
         {/* Profile logout only*/}
-        <div className="profile" onClick={handleProfileClick}>
-          <div className="avatar">ZU</div>
-          <p className="username">USERID</p>
+        <div className="profile">
+          <Link to="/user" style={{ textDecoration: "none", color: "inherit" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+              <div className="avatar">ZU</div>
+              <p className="username">Profile</p>
+            </div>
+          </Link>
         </div>
-
-        {isProfileDropdownOpen && (
-          <div className="profile-dropdown">
-            <button onClick={handleLogout}>Logout</button>
-          </div>
-        )}
       </div>
     </div>
   );

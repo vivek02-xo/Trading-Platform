@@ -3,10 +3,14 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 
+// Express middleware that reads the body (data) sent by the client in an HTTP request and converts it into a JavaScript object
 const bodyParser = require("body-parser");
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
 
+// cors -> It controls which websites are allowed to make requests to another website or server.
+const cors = require("cors");
+
+// Express middleware that reads cookies sent by the browser and makes them available in your Express application
+const cookieParser = require("cookie-parser");
 
 const HoldingsModel = require("./model/HoldingsModel");
 const PositionsModel = require("./model/PositionsModel");
@@ -18,18 +22,18 @@ const PORT = process.env.PORT || 3002;
 const url = process.env.MONGO_URL;
 const app = express();
 
+// using cors
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "http://localhost:3001",
-    ],
+    origin: ["http://localhost:3000", "http://localhost:3001"],
     credentials: true,
-  })
+  }),
 );
+
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+// Auth routes (signup , login , logout , userverifing)
 app.use("/auth", authRoute);
 
 // app.get("/addHoldings" , async(req,res)=>{
@@ -302,9 +306,8 @@ app.post("/newOrder", async (req, res) => {
   res.send("Order saved!");
 });
 
-
-app.listen( PORT, ()=>{
-    console.log("app is listening!");
-    mongoose.connect(url);
-    console.log("DB connected");
+app.listen(PORT, () => {
+  console.log("app is listening!");
+  mongoose.connect(url);
+  console.log("DB connected");
 });

@@ -16,6 +16,11 @@ const UsersSchema = new Schema({
         type : String,
         required : [true , "Your password is required"],
     },
+    fund : {
+        type: Number,
+        required : true,
+        default: 0,
+    },
     createdAt : {
         type : Date,
         default : new Date(),
