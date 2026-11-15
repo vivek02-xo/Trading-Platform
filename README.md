@@ -1,5 +1,6 @@
 # Trading Platform
-This is clone project
+This is clone project.
+
 A full-stack trading platform built with the MERN stack that simulates the core functionalities of a stock trading application.
 Users can create an account, securely log in, manage their portfolio, place buy/sell orders, and view their transaction history through a clean and responsive interface.
 
